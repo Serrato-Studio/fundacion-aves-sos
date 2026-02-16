@@ -1,0 +1,19 @@
+{
+  "name": "Fundación Aves S.O.S",
+  "short_name": "Aves S.O.S",
+  "description": "Fundación Aves S.O.S es una organización sin fines de lucro dedicada a la conservación de las aves y sus hábitats en Colombia. Trabajamos para proteger la biodiversidad y promover la educación ambiental a través de proyectos de investigación, conservación y sensibilización.",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

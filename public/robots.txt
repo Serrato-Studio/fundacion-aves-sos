@@ -1,0 +1,6 @@
+# Permitir a todos los crawlers
+User-agent: *
+Allow: /
+
+# Sitemap de la aplicación
+Sitemap: https://www.fundacionavessos.org.co/sitemap.xml

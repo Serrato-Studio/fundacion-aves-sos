@@ -7,6 +7,7 @@ import PoliciesPage from '@/pages/PoliciesPage';
 import SuccessPage from '@/pages/SuccessPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 import Layout from '@/components/Layout';
+import EmergencyPage from '@/pages/EmergencyPage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/donaciones" element={<DonatePage />} />
         <Route path="/donaciones/exito" element={<SuccessPage />} />
         <Route path="/politicas" element={<PoliciesPage />} />
+        <Route path="/emergencia" element={<EmergencyPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

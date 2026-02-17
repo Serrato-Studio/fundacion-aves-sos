@@ -44,9 +44,9 @@ function NavLink({ href, label }: NavLinkProps) {
 function NavigationLinks() {
   const links = [
     { href: '/', label: 'Inicio' },
-    { href: '/nosotros', label: 'Nosotros' },
-    { href: '/contacto', label: 'Contacto' },
-    { href: '/politicas', label: 'Políticas' },
+    { href: '#', label: 'Nosotros' },
+    { href: '#', label: 'Contacto' },
+    { href: '#', label: 'Políticas' },
   ];
 
   return (
@@ -60,7 +60,7 @@ function NavigationLinks() {
 
 function DonateButton() {
   return (
-    <Link to="/donaciones">
+    <Link to="#">
       <Button size="sm" className="gap-2">
         <Heart className="w-4 h-4" />
         <span className="hidden sm:inline">Donar</span>
@@ -84,9 +84,9 @@ function EmergencyButton() {
 function MobileMenu() {
   const links = [
     { href: '/', label: 'Inicio' },
-    { href: '/nosotros', label: 'Nosotros' },
-    { href: '/contacto', label: 'Contacto' },
-    { href: '/politicas', label: 'Políticas' },
+    { href: '#', label: 'Nosotros' },
+    { href: '#', label: 'Contacto' },
+    { href: '#', label: 'Políticas' },
   ];
 
   return (

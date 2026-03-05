@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
 import FacebookIcon from '@/assets/icons/FacebookIcon';
 import InstagramIcon from '@/assets/icons/InstagramIcon';
+import YouTubeIcon from '@/assets/icons/YouTubeIcon';
 
 function FooterLogo() {
   return (
@@ -15,23 +16,14 @@ function FooterLogo() {
   );
 }
 
-interface FooterLinkProps {
-  href: string;
-  label: string;
-  external?: boolean;
-}
-
-function FooterLink({ href, label, external = false }: FooterLinkProps) {
-  const className =
-    'text-sm text-muted-foreground hover:text-foreground transition-colors';
-
+function FooterLink({ href, label, external } = {}) {
   if (external) {
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={className}
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
       >
         {label}
       </a>
@@ -39,19 +31,16 @@ function FooterLink({ href, label, external = false }: FooterLinkProps) {
   }
 
   return (
-    <Link to={href} className={className}>
+    <Link
+      to={href}
+      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+    >
       {label}
     </Link>
   );
 }
 
-function FooterSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function FooterSection({ title, children }) {
   return (
     <div className="flex flex-col gap-4">
       <h3 className="text-sm font-semibold text-foreground">{title}</h3>
@@ -72,7 +61,11 @@ function SocialLinks() {
       href: 'https://www.instagram.com/avessosbogota/',
       label: 'Instagram',
     },
-    // { icon: YouTubeIcon, href: 'https://www.youtube.com/', label: 'YouTube' },
+    {
+      icon: YouTubeIcon,
+      href: 'https://www.youtube.com/',
+      label: 'YouTube',
+    },
   ];
 
   return (
@@ -100,7 +93,6 @@ function SocialLinks() {
 }
 
 export default function Footer() {
-  const year = new Date().getFullYear();
   return (
     <footer className="border-t border-border/40 bg-background text-foreground">
       <div className="container mx-auto px-4 py-12">
@@ -119,24 +111,22 @@ export default function Footer() {
           </div>
 
           <FooterSection title="Navegación">
-            <FooterLink href="#" label="Inicio" />
-            <FooterLink href="#" label="Nosotros" />
-            <FooterLink href="#" label="Contacto" />
-            <FooterLink href="#" label="Donaciones" />
+            <FooterLink href="/" label="Inicio" />
+            <FooterLink href="/nosotros" label="Nosotros" />
+            <FooterLink href="/contacto" label="Contacto" />
+            <FooterLink href="/donaciones" label="Donaciones" />
           </FooterSection>
 
           <FooterSection title="Organización">
-            <FooterLink href="#" label="Sobre nosotros" />
-            <FooterLink href="#" label="Misión y valores" />
-            <FooterLink href="#" label="Equipo" />
-            <FooterLink href="#" label="Empleos" />
+            <FooterLink href="/nosotros" label="Sobre nosotros" />
+            <FooterLink href="/nosotros#mision" label="Misión y valores" />
+            <FooterLink href="/nosotros#equipo" label="Equipo" />
+            <FooterLink href="/nosotros#empleos" label="Empleos" />
           </FooterSection>
 
           <FooterSection title="Legal">
-            <FooterLink href="#" label="Políticas de privacidad" />
+            <FooterLink href="/politicas" label="Políticas de privacidad" />
             <FooterLink href="#" label="Términos de uso" />
-            <FooterLink href="#" label="Soporte" />
-            <FooterLink href="#" label="Accesibilidad" />
           </FooterSection>
         </div>
 
@@ -144,10 +134,11 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {year} Fundación Aves S.O.S. Todos los derechos reservados.
+            © {new Date().getFullYear()} Fundación Aves S.O.S. Todos los
+            derechos reservados.
           </p>
 
-          <Link to="#">
+          <Link to="/donaciones">
             <Button size="sm" className="gap-2">
               <Heart className="w-4 h-4" />
               Donar

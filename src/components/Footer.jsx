@@ -1,50 +1,41 @@
-import { Link } from 'react-router';
-import { Button } from '@/components/ui/button';
-import { Heart } from 'lucide-react';
-import FacebookIcon from '@/assets/icons/FacebookIcon';
-import InstagramIcon from '@/assets/icons/InstagramIcon';
-import YouTubeIcon from '@/assets/icons/YouTubeIcon';
+import {
+  Bird,
+  Mail,
+  Phone,
+  MapPin,
+  AlertTriangle,
+  Instagram,
+  Facebook,
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-function FooterLogo() {
+const navLinks = [
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Aves de Bogotá', href: '/aves' },
+  { label: 'Informes', href: '/informes' },
+  { label: 'Donar', href: '/donar' },
+  { label: 'Reportar ave', href: '/emergencia' },
+  { label: 'Contacto', href: '/contacto' },
+];
+
+function FooterLink({ href, children }) {
   return (
-    <Link
-      to="/"
-      className="flex items-center gap-2 font-2xl font-bold tracking-tight"
+    <a
+      href={href}
+      className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
     >
-      <span className="text-foreground">Aves S.O.S</span>
-    </Link>
-  );
-}
-
-function FooterLink({ href, label, external } = {}) {
-  if (external) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-      >
-        {label}
-      </a>
-    );
-  }
-
-  return (
-    <Link
-      to={href}
-      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-    >
-      {label}
-    </Link>
+      {children}
+    </a>
   );
 }
 
 function FooterSection({ title, children }) {
   return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-      <div className="flex flex-col gap-3">{children}</div>
+    <div>
+      <h3 className="text-xs uppercase font-semibold tracking-widest text-foreground mb-3">
+        {title}
+      </h3>
+      <div className="space-y-2">{children}</div>
     </div>
   );
 }
@@ -52,41 +43,30 @@ function FooterSection({ title, children }) {
 function SocialLinks() {
   const socials = [
     {
-      icon: FacebookIcon,
-      href: 'https://www.facebook.com/Aves.SOS.Bogota/',
-      label: 'Facebook',
-    },
-    {
-      icon: InstagramIcon,
       href: 'https://www.instagram.com/avessosbogota/',
+      icon: Instagram,
       label: 'Instagram',
     },
     {
-      icon: YouTubeIcon,
-      href: 'https://www.youtube.com/',
-      label: 'YouTube',
+      href: 'https://www.facebook.com/Aves.SOS.Bogota/',
+      icon: Facebook,
+      label: 'Facebook',
     },
   ];
 
   return (
-    <div className="flex gap-2">
-      {socials.map(({ icon: Icon, href, label }) => (
-        <Button
+    <div className="flex gap-3">
+      {socials.map(({ href, icon: Icon, label }) => (
+        <a
           key={label}
-          variant="ghost"
-          size="icon"
-          asChild
-          className="text-muted-foreground hover:text-foreground"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          className="text-muted-foreground hover:text-primary transition-colors"
         >
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-          >
-            <Icon className="w-5 h-5" />
-          </a>
-        </Button>
+          <Icon className="w-5 h-5" />
+        </a>
       ))}
     </div>
   );
@@ -94,56 +74,103 @@ function SocialLinks() {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-background text-foreground">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          <div className="flex flex-col gap-4">
-            <FooterLogo />
-            <p className="text-sm text-muted-foreground">
-              Protegiendo aves en peligro. Juntos hacemos la diferencia.
+    <footer className="bg-muted border-t border-border mt-auto">
+      {/* Emergency Banner */}
+      <div className="bg-destructive text-destructive-foreground">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2">
+          <p className="text-sm font-medium">
+            ¿Encontraste un ave herida o en peligro?
+          </p>
+          <a
+            href="/emergencia"
+            className={cn(
+              'inline-flex items-center gap-2 px-3 py-1.5 rounded',
+              'border border-destructive-foreground',
+              'bg-transparent hover:bg-destructive-foreground hover:text-destructive',
+              'transition-colors text-sm font-medium flex-shrink-0'
+            )}
+          >
+            <AlertTriangle className="w-4 h-4" />
+            Reportar emergencia
+          </a>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div>
+            <a href="/" className="flex items-center gap-2 mb-3">
+              <Bird className="w-6 h-6 text-primary" />
+              <span className="font-bold">
+                Aves <span className="text-primary">S.O.S</span>
+              </span>
+            </a>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              ONG colombiana fundada en 2019, dedicada al rescate, crianza y
+              rehabilitación de aves silvestres en Bogotá.
             </p>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">
-                Síguenos
-              </h3>
-              <SocialLinks />
-            </div>
+            <SocialLinks />
           </div>
 
+          {/* Navigation */}
           <FooterSection title="Navegación">
-            <FooterLink href="/" label="Inicio" />
-            <FooterLink href="/nosotros" label="Nosotros" />
-            <FooterLink href="/contacto" label="Contacto" />
-            <FooterLink href="/donaciones" label="Donaciones" />
+            {navLinks.map((link) => (
+              <FooterLink key={link.href} href={link.href}>
+                {link.label}
+              </FooterLink>
+            ))}
           </FooterSection>
 
-          <FooterSection title="Organización">
-            <FooterLink href="/nosotros" label="Sobre nosotros" />
-            <FooterLink href="/nosotros#mision" label="Misión y valores" />
-            <FooterLink href="/nosotros#equipo" label="Equipo" />
-            <FooterLink href="/nosotros#empleos" label="Empleos" />
+          {/* Contact */}
+          <FooterSection title="Contacto">
+            <div className="space-y-3">
+              <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <span>Bogotá D.C., Colombia</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Mail className="w-4 h-4 text-primary flex-shrink-0" />
+                <FooterLink href="mailto:info@avesSOS.org">
+                  info@avesSOS.org
+                </FooterLink>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                <FooterLink href="tel:+573001234567">
+                  +57 300 123 4567
+                </FooterLink>
+              </div>
+            </div>
           </FooterSection>
 
+          {/* Legal & CTA */}
           <FooterSection title="Legal">
-            <FooterLink href="/politicas" label="Políticas de privacidad" />
-            <FooterLink href="#" label="Términos de uso" />
+            <FooterLink href="/privacidad">Política de privacidad</FooterLink>
+            <a
+              href="/donar"
+              className={cn(
+                'block text-center px-4 py-2 rounded mt-4',
+                'bg-primary text-primary-foreground hover:bg-primary/90',
+                'transition-colors text-sm font-medium'
+              )}
+            >
+              Apoya nuestra misión
+            </a>
           </FooterSection>
         </div>
 
-        <div className="border-t border-border/40 mb-8" />
+        {/* Divider */}
+        <div className="border-t border-border my-8" />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Fundación Aves S.O.S. Todos los
+        {/* Copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+          <p>
+            © {new Date().getFullYear()} Fundación Aves S.O.S Bogotá. Todos los
             derechos reservados.
           </p>
-
-          <Link to="/donaciones">
-            <Button size="sm" className="gap-2">
-              <Heart className="w-4 h-4" />
-              Donar
-            </Button>
-          </Link>
+          <p>ONG sin ánimo de lucro · Fundada en 2019</p>
         </div>
       </div>
     </footer>

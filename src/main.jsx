@@ -10,7 +10,7 @@ import DonatePage from '@/pages/DonatePage';
 import AboutPage from '@/pages/AboutPage';
 import BirdsPage from '@/pages/BirdsPage';
 import ReportsPage from '@/pages/ReportsPage';
-import ContactFormPage from '@/pages/ContactFormPage';
+import ContactPage from '@/pages/ContactPage';
 import PoliciesPage from '@/pages/PoliciesPage';
 import ErrorPage from '@/pages/ErrorPage';
 
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: '/nosotros', element: <AboutPage /> },
       { path: '/aves', element: <BirdsPage /> },
       { path: '/informes', element: <ReportsPage /> },
-      { path: '/contacto', element: <ContactFormPage /> },
+      { path: '/contacto', element: <ContactPage /> },
       { path: '/privacidad', element: <PoliciesPage /> },
       { path: '*', element: <NotFound /> },
     ],

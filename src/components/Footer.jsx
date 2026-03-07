@@ -87,7 +87,7 @@ export default function Footer() {
               'inline-flex items-center gap-2 px-3 py-1.5 rounded',
               'border border-destructive-foreground',
               'bg-transparent hover:bg-destructive-foreground hover:text-destructive',
-              'transition-colors text-sm font-medium flex-shrink-0'
+              'transition-colors text-sm font-medium shrink-0'
             )}
           >
             <AlertTriangle className="w-4 h-4" />
@@ -127,17 +127,17 @@ export default function Footer() {
           <FooterSection title="Contacto">
             <div className="space-y-3">
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                 <span>Bogotá D.C., Colombia</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Mail className="w-4 h-4 text-primary flex-shrink-0" />
+                <Mail className="w-4 h-4 text-primary shrink-0" />
                 <FooterLink href="mailto:info@avesSOS.org">
                   info@avesSOS.org
                 </FooterLink>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                <Phone className="w-4 h-4 text-primary shrink-0" />
                 <FooterLink href="tel:+573001234567">
                   +57 300 123 4567
                 </FooterLink>

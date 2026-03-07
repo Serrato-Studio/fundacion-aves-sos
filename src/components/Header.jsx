@@ -160,7 +160,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 flex-shrink-0">
+        <a href="/" className="flex items-center gap-2 shrink-0">
           <div className="w-8 h-8 rounded-full overflow-hidden">
             <img
               src="/images/logo-bird.jpg"
